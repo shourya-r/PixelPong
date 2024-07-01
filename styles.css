@@ -1,12 +1,18 @@
+:root {
+  --hue: 200;
+  --saturation: 50%;
+  --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+  --background-color: hsl(var(--hue), var(--saturation), 25%);
+}
 body {
   margin: 0;
-  background-color: grey;
+  background-color: var(--background-color);
 }
 
 .paddle {
   --position: 50;
   position: absolute;
-  background-color: white;
+  background-color: var(--foreground-color);
   top: calc(var(--position) * 1vh);
   transform: translateY(-50%);
   width: 1vh;
