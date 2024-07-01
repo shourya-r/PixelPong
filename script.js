@@ -2,6 +2,8 @@ import { Ball } from "./ball.js";
 import { Paddle } from "./paddle.js";
 const startModal = document.querySelector(".start-modal");
 startModal.showModal();
+const endModal = document.querySelector(".end-modal");
+const playAgainButton = document.querySelector(".play-again-button");
 const startButton = document.querySelector(".start-button");
 const ball = new Ball(document.querySelector("#ball"));
 const playerPaddle = new Paddle(document.querySelector("#player-paddle"));
@@ -12,6 +14,11 @@ const playerScore = document.querySelector(".player-score");
 startButton.addEventListener("click", () => {
   startModal.close();
   window.requestAnimationFrame(update);
+});
+
+playAgainButton.addEventListener("click", () => {
+  endModal.close();
+  startModal.showModal();
 });
 
 let lastTime;
@@ -45,6 +52,7 @@ function update(time) {
 function resetGame() {
   playerScore.textContent = 0;
   computerScore.textContent = 0;
+  endModal.showModal();
 }
 
 function isBallOut() {
