@@ -1,6 +1,7 @@
 import { Ball } from "./ball.js";
 import { Paddle } from "./paddle.js";
-
+const startModal = document.querySelector(".start-modal");
+startModal.showModal();
 const ball = new Ball(document.querySelector("#ball"));
 const playerPaddle = new Paddle(document.querySelector("#player-paddle"));
 const computerPaddle = new Paddle(document.querySelector("#computer-paddle"));

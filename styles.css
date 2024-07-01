@@ -10,6 +10,37 @@ body {
   overflow: hidden;
 }
 
+.difficulty-text {
+  font-family: "Press Start 2P", system-ui;
+  color: #fac650;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.difficulty-button,
+.start-button {
+  font-family: "Press Start 2P", system-ui;
+  color: #fac650;
+  font-size: 19px;
+  background-color: #111822;
+  padding: 17px 17px 17px 17px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.start-modal {
+  text-align: center;
+  background-color: #2c3d55;
+  border-radius: 20px;
+  border: none;
+  padding: 25px 20px 25px 20px;
+}
+
+.start-modal::backdrop {
+  background-color: #101216;
+  opacity: 0.9;
+}
+
 .paddle {
   --position: 50;
   position: absolute;
