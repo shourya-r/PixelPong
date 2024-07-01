@@ -47,3 +47,16 @@ body {
   font-size: 7vh;
   color: var(--foreground-color);
 }
+
+.computer-score,
+.player-score {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0 2vh;
+  margin: 1vh, 0;
+}
+
+.player-score {
+  text-align: right;
+  border-right: 0.5vh solid var(--foreground-color);
+}
