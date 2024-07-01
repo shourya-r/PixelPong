@@ -12,6 +12,7 @@ function update(time) {
     const delta = time - lastTime;
     // we pass delta because it fluctuates
     ball.update(delta);
+    computerPaddle.update(delta, ball.y);
   }
 
   lastTime = time;
