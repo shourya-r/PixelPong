@@ -16,6 +16,11 @@ startButton.addEventListener("click", () => {
 
 let lastTime;
 function update(time) {
+  // If score = 5 then end game
+  if (playerScore.textContent == 5 || computerScore.textContent == 5) {
+    resetGame();
+    return;
+  }
   // if lastTime is not NULL then we update
   if (lastTime != null) {
     // find time which has passed since next frame
@@ -36,6 +41,10 @@ function update(time) {
 
   lastTime = time;
   window.requestAnimationFrame(update);
+}
+function resetGame() {
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
 }
 
 function isBallOut() {
