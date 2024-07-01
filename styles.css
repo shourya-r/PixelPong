@@ -11,7 +11,8 @@ body {
 }
 
 .difficulty-text,
-.play-again-button {
+.play-again-button,
+.winner-text {
   font-family: "Press Start 2P", system-ui;
   color: #fac650;
   font-size: 25px;

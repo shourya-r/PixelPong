@@ -4,6 +4,7 @@ import { Paddle } from "./paddle.js";
 const startModal = document.querySelector(".start-modal");
 startModal.showModal();
 const endModal = document.querySelector(".end-modal");
+const winnerText = document.querySelector(".winner-text");
 const playAgainButton = document.querySelector(".play-again-button");
 const startButton = document.querySelector(".start-button");
 const easyButton = document.querySelector(".difficulty-button.easy");
@@ -53,8 +54,12 @@ hardButton.addEventListener("click", () => {
 let lastTime;
 function update(time) {
   // If score = 5 then end game
-  if (playerScore.textContent == 5 || computerScore.textContent == 5) {
-    resetGame();
+  if (playerScore.textContent == 5) {
+    resetGame("player");
+    return;
+  }
+  if (computerScore.textContent == 5) {
+    resetGame("computer");
     return;
   }
   // if lastTime is not NULL then we update
@@ -80,7 +85,9 @@ function update(time) {
 }
 
 // Updated resetGame function to reset scores when the game resets
-function resetGame() {
+function resetGame(winner) {
+  if (winner === "player") winnerText.textContent = "Player won!";
+  else winnerText.textContent = "Computer won!";
   initializeScores(); // Reset scores
   endModal.showModal();
 }
