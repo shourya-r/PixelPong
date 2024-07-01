@@ -2,11 +2,17 @@ import { Ball } from "./ball.js";
 import { Paddle } from "./paddle.js";
 const startModal = document.querySelector(".start-modal");
 startModal.showModal();
+const startButton = document.querySelector(".start-button");
 const ball = new Ball(document.querySelector("#ball"));
 const playerPaddle = new Paddle(document.querySelector("#player-paddle"));
 const computerPaddle = new Paddle(document.querySelector("#computer-paddle"));
 const computerScore = document.querySelector(".computer-score");
 const playerScore = document.querySelector(".player-score");
+
+startButton.addEventListener("click", () => {
+  startModal.close();
+  window.requestAnimationFrame(update);
+});
 
 let lastTime;
 function update(time) {
@@ -54,5 +60,3 @@ function handleLose() {
 document.addEventListener("mousemove", (e) => {
   playerPaddle.position = (e.y / window.innerHeight) * 100;
 });
-
-window.requestAnimationFrame(update);
