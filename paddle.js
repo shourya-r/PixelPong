@@ -2,6 +2,7 @@ const SPEED = 0.02;
 class Paddle {
   constructor(paddleElem) {
     this.paddleElem = paddleElem;
+    this.reset();
   }
 
   get position() {
@@ -14,7 +15,12 @@ class Paddle {
     this.paddleElem.style.setProperty("--position", value);
   }
 
+  reset() {
+    this.position = 50;
+  }
+
   update(delta, ballHeight) {
+    // SPEED * delta introduces some error
     this.position += SPEED * delta * (ballHeight - this.position);
   }
 }
