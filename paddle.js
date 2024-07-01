@@ -19,6 +19,9 @@ class Paddle {
     this.position = 50;
   }
 
+  rect() {
+    return this.paddleElem.getBoundingClientRect();
+  }
   update(delta, ballHeight) {
     // SPEED * delta introduces some error
     this.position += SPEED * delta * (ballHeight - this.position);

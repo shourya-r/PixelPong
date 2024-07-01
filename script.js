@@ -14,7 +14,7 @@ function update(time) {
     // find time which has passed since next frame
     const delta = time - lastTime;
     // we pass delta because it fluctuates
-    ball.update(delta);
+    ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()]);
     computerPaddle.update(delta, ball.y);
 
     if (isBallOut()) {
