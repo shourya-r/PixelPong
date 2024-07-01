@@ -1,4 +1,4 @@
-const INITIAL_VALUE = 0.25;
+const INITIAL_VALUE = 0.025;
 class Ball {
   constructor(ballElem) {
     this.ballElem = ballElem;
@@ -44,8 +44,8 @@ class Ball {
   }
 
   update(delta) {
-    this.x += this.direction.x * this.velocity;
-    this.y += this.direction.y * this.velocity;
+    this.x += this.direction.x * this.velocity * delta;
+    this.y += this.direction.y * this.velocity * delta;
   }
 }
 function randomNumberBetween(min, max) {
