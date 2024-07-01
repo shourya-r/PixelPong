@@ -17,5 +17,9 @@ function update(time) {
   lastTime = time;
   window.requestAnimationFrame(update);
 }
+// player paddle will move wherever the mouse moves
+document.addEventListener("mousemove", (e) => {
+  playerPaddle.position = (e.y / window.innerHeight) * 100;
+});
 
 window.requestAnimationFrame(update);
