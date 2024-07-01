@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  background-color: grey;
+}
+
+.paddle {
+  position: absolute;
+  background-color: white;
+  width: 1vh;
+  height: 10vh;
+}
+
+.paddle.left {
+  left: 1vw;
+}
+
+.paddle.right {
+  right: 1vw;
+}
