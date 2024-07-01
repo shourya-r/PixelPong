@@ -22,6 +22,10 @@ class Ball {
     this.ballElem.style.setProperty("--y", value);
   }
 
+  rect() {
+    return this.ballElem.getBoundingClientRect();
+  }
+
   // 1.set ball to be in center initially
   // 2.the direction is 0 initially
   // 3.we have direction as unit vector so only velocity determines
@@ -46,6 +50,14 @@ class Ball {
   update(delta) {
     this.x += this.direction.x * this.velocity * delta;
     this.y += this.direction.y * this.velocity * delta;
+    const rect = this.rect();
+    // rect returns the ball's DOMRect Object with properties of size and position
+    if (rect.bottom >= window.innerHeight || rect.top <= 0) {
+      this.direction.y *= -1;
+    }
+    if (rect.left <= 0 || rect.right >= window.innerWidth) {
+      this.direction.x *= -1;
+    }
   }
 }
 function randomNumberBetween(min, max) {
