@@ -1,5 +1,6 @@
 import { Ball } from "./ball.js";
 import { Paddle } from "./paddle.js";
+
 const startModal = document.querySelector(".start-modal");
 startModal.showModal();
 const endModal = document.querySelector(".end-modal");
@@ -14,20 +15,45 @@ const computerPaddle = new Paddle(document.querySelector("#computer-paddle"));
 const computerScore = document.querySelector(".computer-score");
 const playerScore = document.querySelector(".player-score");
 
+let difficulty;
+
+// Function to initialize scores (new function)
+function initializeScores() {
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
+}
+
+// Updated startButton event listener to reset scores when the game starts
 startButton.addEventListener("click", () => {
+  initializeScores(); // Reset scores
+  ball.reset();
   startModal.close();
   window.requestAnimationFrame(update);
 });
 
+// Updated playAgainButton event listener to reset scores when playing again
 playAgainButton.addEventListener("click", () => {
+  initializeScores(); // Reset scores
   endModal.close();
   startModal.showModal();
 });
 
+easyButton.addEventListener("click", () => {
+  difficulty = "easy";
+});
+
+mediumButton.addEventListener("click", () => {
+  difficulty = "medium";
+});
+
+hardButton.addEventListener("click", () => {
+  difficulty = "hard";
+});
+
 let lastTime;
 function update(time) {
-  // If score = 5 then end game
-  if (playerScore.textContent == 5 || computerScore.textContent == 5) {
+  // If score = 2 then end game
+  if (playerScore.textContent == 2 || computerScore.textContent == 2) {
     resetGame();
     return;
   }
@@ -37,7 +63,7 @@ function update(time) {
     const delta = time - lastTime;
     // we pass delta because it fluctuates
     ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()]);
-    computerPaddle.update(delta, ball.y);
+    computerPaddle.update(delta, ball.y, difficulty);
 
     const hue = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue("--hue")
@@ -52,9 +78,10 @@ function update(time) {
   lastTime = time;
   window.requestAnimationFrame(update);
 }
+
+// Updated resetGame function to reset scores when the game resets
 function resetGame() {
-  playerScore.textContent = 0;
-  computerScore.textContent = 0;
+  initializeScores(); // Reset scores
   endModal.showModal();
 }
 
