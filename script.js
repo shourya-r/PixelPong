@@ -52,8 +52,8 @@ hardButton.addEventListener("click", () => {
 
 let lastTime;
 function update(time) {
-  // If score = 2 then end game
-  if (playerScore.textContent == 2 || computerScore.textContent == 2) {
+  // If score = 5 then end game
+  if (playerScore.textContent == 5 || computerScore.textContent == 5) {
     resetGame();
     return;
   }
