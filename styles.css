@@ -4,8 +4,11 @@ body {
 }
 
 .paddle {
+  --position: 50;
   position: absolute;
   background-color: white;
+  top: calc(var(--position) * 1vh);
+  transform: translateY(-50%);
   width: 1vh;
   height: 10vh;
 }
