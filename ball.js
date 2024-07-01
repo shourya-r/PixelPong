@@ -1,4 +1,5 @@
 const INITIAL_VALUE = 0.025;
+const VELOCITY_INCREASE = 0.00001;
 class Ball {
   constructor(ballElem) {
     this.ballElem = ballElem;
@@ -50,6 +51,7 @@ class Ball {
   update(delta) {
     this.x += this.direction.x * this.velocity * delta;
     this.y += this.direction.y * this.velocity * delta;
+    this.velocity += VELOCITY_INCREASE * delta;
     const rect = this.rect();
     // rect returns the ball's DOMRect Object with properties of size and position
     if (rect.bottom >= window.innerHeight || rect.top <= 0) {
